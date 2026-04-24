@@ -1,0 +1,26 @@
+# Empressor — Python dependencies
+# ---------------------------------
+# Recommended: Python 3.10+ (3.9+ may work if all wheels are available).
+#
+# PyTorch with CUDA: install torch/torchvision first from the official index, then install the rest:
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
+#   pip install -r requirements.txt
+# (Replace cu124 with the wheel that matches your CUDA version; use the CPU index URL if you have no GPU.)
+#
+# Fresh environment (example with conda):
+#   conda create -n empressor python=3.10 -y
+#   conda activate empressor
+#   pip install torch torchvision  # add -f / --index-url per https://pytorch.org if you need CUDA
+#   pip install -r requirements.txt
+
+torch>=2.0.0
+torchvision>=0.15.0
+numpy>=1.22.0
+pandas>=1.5.0
+scipy>=1.9.0
+matplotlib>=3.6.0
+Pillow>=9.0.0
+tqdm>=4.64.0
+scikit-opt>=0.6.0
+xlrd>=2.0.0
+dinuc-shuf>=0.1.0b1

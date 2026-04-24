@@ -1,0 +1,11 @@
+data/MPRA_data/chromosome_split_HepG2_train.csv
+data/MPRA_data/chromosome_split_HepG2_val.csv
+data/MPRA_data/chromosome_split_HepG2_test.csv
+data/MPRA_data/chromosome_split_K562_train.csv
+data/MPRA_data/chromosome_split_K562_val.csv
+data/MPRA_data/chromosome_split_K562_test.csv
+data/MPRA_data/chromosome_split_SK-N-SH_train.csv
+data/MPRA_data/chromosome_split_SK-N-SH_val.csv
+data/MPRA_data/chromosome_split_SK-N-SH_test.csv
+__pycache__/
+*.pyc
