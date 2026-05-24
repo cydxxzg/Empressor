@@ -12,12 +12,12 @@ import numpy as np
 import random
 
 parser = argparse.ArgumentParser(description="Start of combine and optimize algothrim.")
-parser.add_argument('-name', type=str, help='name of promoter', required=True)
+parser.add_argument('-name', type=str, help='name of enhancer', required=True)
 parser.add_argument('-predictor', type=str, help='predictor model', required=True)
 parser.add_argument('-predictor2', type=str, help='specificity predictor model 2', default=None)
 parser.add_argument('-predictor3', type=str, help='specificity predictor model 3', default=None)
 parser.add_argument('-generator', type=str, help='generate model', required=True)
-parser.add_argument('-promoter_path', type=str, help='promoter file', required=True)
+parser.add_argument('-enhancer_path', type=str, help='enhancer file', required=True)
 parser.add_argument('-motif_split', type=str, help='motif split file', required=True)
 parser.add_argument('-num', type=int, help='number of motif', default=8)
 parser.add_argument('-tag', type=str, help='tag', default='HepG2')
@@ -28,9 +28,9 @@ parser.add_argument('-save_path', type=str, help='save path', default='../result
 parser.add_argument('-specificity', action='store_true', help='enable specificity compression mode')
 args = parser.parse_args()
 
-Promoter_name = args.name
+Enhancer_name = args.name
 motif_split = args.motif_split
-promoter_path = args.promoter_path
+enhancer_path = args.enhancer_path
 predictor_path = args.predictor
 predictor2_path = args.predictor2
 predictor3_path = args.predictor3
@@ -60,9 +60,9 @@ gn_pop_num = 50
 gn_n_gen = 10
 
 
-with open(promoter_path, 'r') as f:
-    promoter = f.readline()
-    promoter = ''.join([s.upper() for s in promoter])
+with open(enhancer_path, 'r') as f:
+    enhancer = f.readline()
+    enhancer = ''.join([s.upper() for s in enhancer])
 
 with open(motif_split, 'r') as f:
     start = f.readline()
@@ -237,7 +237,7 @@ def random_init(chromo_len):
 
 class Agency:
     def __init__(self):
-        self.seq = promoter
+        self.seq = enhancer
         self.start = Motif_starts
         self.stop = Motif_stops
         self.motif_num = len(self.start)
@@ -366,18 +366,18 @@ class Agency:
     def save(self):
         sorted_idx = np.argsort(-self.now_fitness)
         best_seq = [self.seq_list[i] for i in sorted_idx]
-        os.makedirs(f'{save_path}/{Promoter_name}_{chosen_num}_{tag}_{day_tag}', exist_ok=True)
-        with open(f'{save_path}/{Promoter_name}_{chosen_num}_{tag}_{day_tag}/best_seq.txt', 'w') as f:
+        os.makedirs(f'{save_path}/{Enhancer_name}_{chosen_num}_{tag}_{day_tag}', exist_ok=True)
+        with open(f'{save_path}/{Enhancer_name}_{chosen_num}_{tag}_{day_tag}/best_seq.txt', 'w') as f:
             for seq in best_seq:
                 f.write(seq+'\n')
 
-        with open(f'{save_path}/{Promoter_name}_{chosen_num}_{tag}_{day_tag}/ever_score.txt','w') as f:
+        with open(f'{save_path}/{Enhancer_name}_{chosen_num}_{tag}_{day_tag}/ever_score.txt','w') as f:
             for i,score_list in enumerate(self.ever_score):
                 f.write("epoch:" + str(i) + "\n")
                 for score in score_list:
                     f.write(str(score)+'\n')
 
-        with open(f'{save_path}/{Promoter_name}_{chosen_num}_{tag}_{day_tag}/ever_best_seq.txt','w') as f:
+        with open(f'{save_path}/{Enhancer_name}_{chosen_num}_{tag}_{day_tag}/ever_best_seq.txt','w') as f:
             for seq in self.ever_best:
                 f.write(seq+'\n')
 

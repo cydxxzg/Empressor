@@ -6,6 +6,18 @@ This README describes the end-to-end workflow for a new target element and cell 
 
 ---
 
+## Quick Start
+
+```bash
+pip install -r requirements.txt
+cd code
+bash test_combine.sh
+```
+
+Test a simple cmv compression script for the hepg2 cell line.
+
+---
+
 ## Prerequisites
 
 - **JASPAR** (sometimes referred to as “Jasper” in informal notes): Download position weight matrices (PWMs) for the appropriate **taxonomic group** of your study species.

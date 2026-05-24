@@ -299,6 +299,8 @@ class DenseLSTM2(nn.Module):
         out = out.squeeze(-1)
         return out
 
+FlexibleDenseLSTM = DenseLSTM2
+
 
 def cal_gradient_penalty(netD, real_data, fake_data, device, type='mixed', constant=1.0, lambda_gp=10.0):
     """Calculate the gradient penalty loss, used in WGAN-GP paper https://arxiv.org/abs/1704.00028
